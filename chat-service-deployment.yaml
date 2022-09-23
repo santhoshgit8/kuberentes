@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: chat-service
+  name: chat-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: chat-service
+  template:
+    metadata:
+      labels:
+        app: chat-service
+    spec:
+      containers:
+        - image: ahhmedhs/project-chat-service
+          name: chat-service
+          ports:
+            - containerPort: 8070
+      hostname: localhost
+      restartPolicy: Always

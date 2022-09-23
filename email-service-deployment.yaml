@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: email-service
+  name: email-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-service
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: email-service
+    spec:
+      containers:
+        - image: ahhmedhs/project-email-service
+          name: email-service
+          ports:
+            - containerPort: 8075
+      hostname: localhost
+      restartPolicy: Always

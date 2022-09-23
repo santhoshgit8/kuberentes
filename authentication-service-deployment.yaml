@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: authentication-service
+  name: authentication-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authentication-service
+  template:
+    metadata:
+      labels:
+        app: authentication-service
+    spec:
+      containers:
+        - image: ahhmedhs/authenticationservice
+          name: authentication-service
+          ports:
+            - containerPort: 9100
+      hostname: localhost
+      restartPolicy: Always

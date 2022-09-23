@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp
+  name: webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - image: ahhmedhs/project-webapp
+          name: webapp
+          ports:
+            - containerPort: 4200
+      hostname: localhost
+      restartPolicy: Always
